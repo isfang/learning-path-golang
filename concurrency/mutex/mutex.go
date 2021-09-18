@@ -34,7 +34,7 @@ func mutex()  {
 	for i := 0; i < 10; i++ {
 		go func() {
 			defer wg.Done()
-			for j := 0; j < 1000000; j++ {
+			for j := 0; j < 100000; j++ {
 				counter.Incr()
 			}
 		}()

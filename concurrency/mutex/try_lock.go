@@ -30,8 +30,8 @@ func (m *Mutex) TryLock() bool {
 		return false
 	}
 
-	new := old | mutexLocked
-	return atomic.CompareAndSwapInt32(current, old, new)
+	mutexStatus := old | mutexLocked // new 有警告
+	return atomic.CompareAndSwapInt32(current, old, mutexStatus)
 }
 
 func (m *Mutex) Count() int {
